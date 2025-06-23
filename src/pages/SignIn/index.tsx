@@ -1,93 +1,43 @@
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import {Header, TextInput} from '../../components/molecules';
+import {Button, Gap} from '../../components/atoms';
 
-const SignInScreen = () => {
+const SignIn = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Sign In</Text>
-
-      <Text style={styles.label}>Email Address</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Type your email address"
-        placeholderTextColor="#A9A9B0"
-      />
-
-      <Text style={styles.label}>Password</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Type your password"
-        placeholderTextColor="#A9A9B0"
-        secureTextEntry
-      />
-
-      <TouchableOpacity style={styles.signInButton}>
-        <Text style={styles.signInText}>Sign In</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.createButton}>
-        <Text style={styles.createText}>Create New Account</Text>
-      </TouchableOpacity>
+    <View style={styles.pageContainer}>
+      <Header text="Sign In" />
+      <View style={styles.contentContainer}>
+        <Gap height={26} />
+        <TextInput
+          text="Email Address"
+          placeholder="Enter your email address"
+        />
+        <Gap height={16} />
+        <TextInput text="Password" placeholder="Enter your password" />
+        <Gap height={24} />
+        <Button text="Sign In" onPress={() => navigation.navigate('Home')} />
+        <Gap height={12} />
+        <Button
+          text="Create New Account"
+          color="#8D92A3"
+          buttonColor="#FFFFFF"
+          onPress={() => navigation.navigate('SignUp')}
+        />
+      </View>
     </View>
   );
 };
 
-export default SignInScreen;
+export default SignIn;
 
 const styles = StyleSheet.create({
-  container: {
+  pageContainer: {
     flex: 1,
-    backgroundColor: 'white',
-    padding: 30,
-    justifyContent: 'center',
   },
-  title: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    color: 'black',
-    marginBottom: 40,
-  },
-  label: {
-    fontSize: 14,
-    color: 'black',
-    marginBottom: 6,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 8,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginBottom: 20,
-    fontSize: 14,
-  },
-  signInButton: {
-    backgroundColor: '#00C471',
-    paddingVertical: 14,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  signInText: {
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 14,
-  },
-  createButton: {
-    backgroundColor: '#A4A9B0',
-    paddingVertical: 14,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  createText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 14,
+  contentContainer: {
+    flex: 1,
+    marginTop: 24,
+    marginHorizontal: 24,
   },
 });
